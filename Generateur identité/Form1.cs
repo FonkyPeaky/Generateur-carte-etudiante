@@ -2,7 +2,7 @@ namespace Generateur_identité
 {
     public partial class Form1 : Form
     {
-        //On crée les prestataires Form to Form2
+        // On crée les prestataires Form to Form2
 
         public static string GETNOM = "";
         public static string GETPRENOM = "";
@@ -15,21 +15,45 @@ namespace Generateur_identité
 
         public static PictureBox pctBx = new();
 
-        string Reveal = "";
+        string GenderReveal = "";
+
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+
+        // Clear la textbox ID au changement du genre afin de pas crée de confusion entre #H & #F
+
+        private void RDFEMME_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.RDHOMME.Checked)
+            {
+                GenderReveal = "Homme";
+                TXTID.Clear();
+            }
+            GETGENRE = GenderReveal;
+        }
+
+        private void RDHOMME_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.RDFEMME.Checked)
+            {
+                GenderReveal = "Femme";
+                TXTID.Clear();
+            }
+            GETGENRE = GenderReveal;
 
         }
 
         public void BTNRANDOM_Click(object sender, EventArgs e)
         {
-            // Generer un nombre aleatoire pour un identifiant unique de 19870500 a 98463240;
-            // Debute par #H si Homme coché & #F si femme coché
+            // Generer un nombre aleatoire pour un identifiant unique de 10025493 a 99463299;
+            // Debute par #H si Homme check & #F si Femme check
 
             Random num = new();
-            var randomBetween = num.Next(19870500, 98463240);
+            var randomBetween = num.Next(10025493, 99463299);
 
             if (this.RDHOMME.Checked)
             {
@@ -41,26 +65,9 @@ namespace Generateur_identité
             }
         }
 
-        public string RDHOMME_Checked()
-        {
-            //Clear la textbox ID au changement du genre afin de pas crée de confusion 
-
-            if (this.RDFEMME.Checked)
-            {
-                TXTID.Clear();
-                Reveal = "Femme";
-            }
-            else
-            {
-                TXTID.Clear();
-                Reveal = "Homme";
-            }
-            return Reveal;
-        }
-
         private void BTNDOWNLOAD_Click_1(object sender, EventArgs e)
         {
-            //Filtrer les Img compatibles et ouvrir l'explorateur de ficher
+            // Filtrer les Img compatibles et ouvrir l'explorateur de ficher
 
             OpenFileDialog open = new();
             open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
@@ -69,38 +76,115 @@ namespace Generateur_identité
             {
 
                 PIC_ID.Image = new Bitmap(open.FileName);
+
             }
 
             pctBx.Image = PIC_ID.Image;
+
         }
 
         private void BTNAPERCU_Click(object sender, EventArgs e)
         {
-            //Appel a un prestataire pour envoyé les infos dans un enouvelle form (form2)
-            GETNOM = TXTNOM.Text;
-            GETPRENOM = TXTPRENOM.Text;
-            GETETUDE = TXTETUDE.Text;
-            GETDATE = dateTimePicker2.Text;
-            GETTELEPHONE = TXTNUMERO.Text;
-            GETID = TXTID.Text;
-            GETNAISSANCE = dateTimePicker1.Text;
-            this.RDHOMME_Checked();
-            GETGENRE = Reveal;
 
-            Form form2 = new Form2();
-            form2.ShowDialog();
+            if (String.IsNullOrEmpty(TXTNOM.Text))
+            {
+                string ErrorNom = Microsoft.VisualBasic.Interaction.InputBox("Merci de renseigné votre nom", "Oups !", "Votre Nom ICI");
+                TXTNOM.Text = ErrorNom;
+            }
+            if (String.IsNullOrEmpty(TXTPRENOM.Text))
+            {
+                string ErrorPrenom = Microsoft.VisualBasic.Interaction.InputBox("Merci de renseigné votre prenom", "Oups !", "Votre prenom ICI");
+                TXTPRENOM.Text = ErrorPrenom;
+            }
+
+            if (String.IsNullOrEmpty(TXTNUMERO.Text))
+            {
+                string ErrorNumero = Microsoft.VisualBasic.Interaction.InputBox("Merci de renseigné votre numero", "Oups !", "Inserer votre numero ICI");
+                TXTNUMERO.Text = ErrorNumero;
+            }
+            if (String.IsNullOrEmpty(TXTETUDE.Text))
+            {
+                string ErrorEtude = Microsoft.VisualBasic.Interaction.InputBox("Merci de renseigné vos etudes", "Oups !", "Inserer votre Etude ICI");
+                TXTETUDE.Text = ErrorEtude;
+            }
+            if (String.IsNullOrEmpty(TXTID.Text))
+            {
+
+                MessageBox.Show("Merci de renseigné votre ID \nAstuce = Cliquez sur le bouton de droite pour faire apparaître votre ID", "Oups !");
+            }
+            else if (TXTID.Text.Contains("#"))
+            {
+                Form2 f2 = new Form2();
+                f2.ShowDialog();
+            }
+
+
+
         }
 
-        public void BTNADD_Click(object sender, EventArgs e)
+
+        private void Form1_Load(object sender, EventArgs e)
         {
-            Form2 form2 = new();
+            dateTimePicker1.CustomFormat = " dd  -  MM  -  yyyy  ";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            string datetime1 = DateTime.Now.ToString("dd/MM/yyyy");
+            dateTimePicker1.Text = datetime1;
 
-            using Graphics gfx = form2.CreateGraphics();
-            using Bitmap card = new Bitmap(form2.Height, form2.Width, gfx);
+            dateTimePicker2.CustomFormat = " dd  -  MM  -  yyyy  ";
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            string datetime2 = DateTime.Now.ToString("dd/MM/yyyy");
+            dateTimePicker2.Text = datetime2;
+        }
 
-            form2.DrawToBitmap(card, new(0, 0, form2.Height, form2.Width));
-            card.Save("panel.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            form2.ShowDialog();
+        private void TXTNOM_TextChanged(object sender, EventArgs e)
+        {
+
+            GETNOM = TXTNOM.Text;
+
+        }
+
+        private void TXTPRENOM_TextChanged(object sender, EventArgs e)
+        {
+
+            GETPRENOM = TXTPRENOM.Text;
+
+        }
+
+        private void TXTETUDE_TextChanged(object sender, EventArgs e)
+        {
+
+            GETETUDE = TXTETUDE.Text;
+
+        }
+
+        private void TXTNUMERO_TextChanged(object sender, EventArgs e)
+        {
+
+            GETTELEPHONE = TXTNUMERO.Text;
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+            GETNAISSANCE = dateTimePicker1.Text;
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+            GETDATE = dateTimePicker2.Text;
+
+        }
+
+        private void TXTID_TextChanged(object sender, EventArgs e)
+        {
+
+            GETID = TXTID.Text;
+
         }
     }
 }
+
+

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.BTNADD = new System.Windows.Forms.Button();
             this.IDD = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,18 +55,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PIC_ID)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // BTNADD
-            // 
-            this.BTNADD.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.BTNADD.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BTNADD.Location = new System.Drawing.Point(540, 542);
-            this.BTNADD.Name = "BTNADD";
-            this.BTNADD.Size = new System.Drawing.Size(192, 63);
-            this.BTNADD.TabIndex = 1;
-            this.BTNADD.Text = "Telecharger";
-            this.BTNADD.UseVisualStyleBackColor = true;
-            this.BTNADD.Click += new System.EventHandler(this.BTNADD_Click);
             // 
             // IDD
             // 
@@ -125,39 +112,52 @@
             // 
             // TXTID
             // 
-            this.TXTID.Location = new System.Drawing.Point(6, 149);
+            this.TXTID.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.TXTID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TXTID.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TXTID.Location = new System.Drawing.Point(9, 149);
             this.TXTID.Name = "TXTID";
             this.TXTID.ReadOnly = true;
             this.TXTID.Size = new System.Drawing.Size(276, 32);
             this.TXTID.TabIndex = 10;
+            this.TXTID.TextChanged += new System.EventHandler(this.TXTID_TextChanged);
             // 
             // TXTNOM
             // 
-            this.TXTNOM.Location = new System.Drawing.Point(6, 211);
+            this.TXTNOM.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TXTNOM.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TXTNOM.Location = new System.Drawing.Point(9, 211);
             this.TXTNOM.Name = "TXTNOM";
             this.TXTNOM.Size = new System.Drawing.Size(276, 32);
             this.TXTNOM.TabIndex = 11;
+            this.TXTNOM.TextChanged += new System.EventHandler(this.TXTNOM_TextChanged);
             // 
             // TXTPRENOM
             // 
-            this.TXTPRENOM.Location = new System.Drawing.Point(6, 273);
+            this.TXTPRENOM.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TXTPRENOM.Location = new System.Drawing.Point(9, 273);
             this.TXTPRENOM.Name = "TXTPRENOM";
             this.TXTPRENOM.Size = new System.Drawing.Size(276, 32);
             this.TXTPRENOM.TabIndex = 12;
+            this.TXTPRENOM.TextChanged += new System.EventHandler(this.TXTPRENOM_TextChanged);
             // 
             // TXTETUDE
             // 
-            this.TXTETUDE.Location = new System.Drawing.Point(6, 335);
+            this.TXTETUDE.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TXTETUDE.Location = new System.Drawing.Point(9, 335);
             this.TXTETUDE.Name = "TXTETUDE";
             this.TXTETUDE.Size = new System.Drawing.Size(276, 32);
             this.TXTETUDE.TabIndex = 13;
+            this.TXTETUDE.TextChanged += new System.EventHandler(this.TXTETUDE_TextChanged);
             // 
             // TXTNUMERO
             // 
-            this.TXTNUMERO.Location = new System.Drawing.Point(7, 401);
+            this.TXTNUMERO.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TXTNUMERO.Location = new System.Drawing.Point(9, 400);
             this.TXTNUMERO.Name = "TXTNUMERO";
             this.TXTNUMERO.Size = new System.Drawing.Size(275, 32);
             this.TXTNUMERO.TabIndex = 14;
+            this.TXTNUMERO.TextChanged += new System.EventHandler(this.TXTNUMERO_TextChanged);
             // 
             // PIC_ID
             // 
@@ -190,33 +190,38 @@
             this.groupBox1.Controls.Add(this.TXTETUDE);
             this.groupBox1.Controls.Add(this.TXTPRENOM);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(37, 35);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(377, 585);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ajout d\'une carte etudiante";
+            this.groupBox1.Text = "       Creation d\'une carte etudiante";
             // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker2.Location = new System.Drawing.Point(6, 532);
+            this.dateTimePicker2.Location = new System.Drawing.Point(9, 532);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(273, 32);
+            this.dateTimePicker2.Size = new System.Drawing.Size(276, 32);
             this.dateTimePicker2.TabIndex = 25;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Location = new System.Drawing.Point(9, 470);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(273, 32);
+            this.dateTimePicker1.Size = new System.Drawing.Size(275, 32);
             this.dateTimePicker1.TabIndex = 24;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // BTNRANDOM
             // 
-            this.BTNRANDOM.Location = new System.Drawing.Point(280, 149);
+            this.BTNRANDOM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTNRANDOM.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BTNRANDOM.Location = new System.Drawing.Point(291, 150);
             this.BTNRANDOM.Name = "BTNRANDOM";
             this.BTNRANDOM.Size = new System.Drawing.Size(34, 31);
             this.BTNRANDOM.TabIndex = 23;
@@ -227,6 +232,7 @@
             // RDFEMME
             // 
             this.RDFEMME.AutoSize = true;
+            this.RDFEMME.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RDFEMME.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.RDFEMME.Location = new System.Drawing.Point(112, 78);
             this.RDFEMME.Name = "RDFEMME";
@@ -235,10 +241,12 @@
             this.RDFEMME.TabStop = true;
             this.RDFEMME.Text = "Femme";
             this.RDFEMME.UseVisualStyleBackColor = true;
+            this.RDFEMME.CheckedChanged += new System.EventHandler(this.RDFEMME_CheckedChanged);
             // 
             // RDHOMME
             // 
             this.RDHOMME.AutoSize = true;
+            this.RDHOMME.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RDHOMME.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.RDHOMME.Location = new System.Drawing.Point(9, 78);
             this.RDHOMME.Name = "RDHOMME";
@@ -247,6 +255,7 @@
             this.RDHOMME.TabStop = true;
             this.RDHOMME.Text = "Homme";
             this.RDHOMME.UseVisualStyleBackColor = true;
+            this.RDHOMME.CheckedChanged += new System.EventHandler(this.RDHOMME_CheckedChanged);
             // 
             // label7
             // 
@@ -268,13 +277,14 @@
             // 
             // BTNAPERCU
             // 
+            this.BTNAPERCU.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BTNAPERCU.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.BTNAPERCU.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BTNAPERCU.Location = new System.Drawing.Point(540, 473);
+            this.BTNAPERCU.Location = new System.Drawing.Point(540, 474);
             this.BTNAPERCU.Name = "BTNAPERCU";
             this.BTNAPERCU.Size = new System.Drawing.Size(192, 63);
             this.BTNAPERCU.TabIndex = 19;
-            this.BTNAPERCU.Text = "Voir un aperçu";
+            this.BTNAPERCU.Text = "Voir aperçu";
             this.BTNAPERCU.UseVisualStyleBackColor = true;
             this.BTNAPERCU.Click += new System.EventHandler(this.BTNAPERCU_Click);
             // 
@@ -284,13 +294,14 @@
             // 
             // BTNDOWNLOAD
             // 
+            this.BTNDOWNLOAD.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BTNDOWNLOAD.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.BTNDOWNLOAD.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.BTNDOWNLOAD.Location = new System.Drawing.Point(540, 404);
             this.BTNDOWNLOAD.Name = "BTNDOWNLOAD";
             this.BTNDOWNLOAD.Size = new System.Drawing.Size(192, 63);
             this.BTNDOWNLOAD.TabIndex = 20;
-            this.BTNDOWNLOAD.Text = "Ajouter une image";
+            this.BTNDOWNLOAD.Text = "Ajouter une photo";
             this.BTNDOWNLOAD.UseVisualStyleBackColor = true;
             this.BTNDOWNLOAD.Click += new System.EventHandler(this.BTNDOWNLOAD_Click_1);
             // 
@@ -301,15 +312,19 @@
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(839, 644);
+            this.ClientSize = new System.Drawing.Size(799, 655);
             this.Controls.Add(this.BTNDOWNLOAD);
             this.Controls.Add(this.BTNAPERCU);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.PIC_ID);
-            this.Controls.Add(this.BTNADD);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Generateur de carte etudiante";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PIC_ID)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -320,7 +335,7 @@
         #endregion
 
         
-        private Button BTNADD;
+        
         private Label IDD;
         private Label label2;
         private Label label3;
